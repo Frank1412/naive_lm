@@ -17,7 +17,7 @@ Small **decoder-style causal Transformer** trained on synthetic lines `a+b=c` us
 ## Environment
 
 ```bash
-cd /Users/shouzhifang/Documents/Syracuse/735/naive_lm
+cd /xxx/naive_lm
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
