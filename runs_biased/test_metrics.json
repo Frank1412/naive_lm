@@ -1,0 +1,20 @@
+{
+  "checkpoint": "/Users/shouzhifang/Documents/Syracuse/735/naive_lm/runs_biased/best.pt",
+  "metrics": {
+    "val_loss_teacher": 1.559505542119344,
+    "test_loss_teacher": 1.550001819928487,
+    "val_token_accuracy": 0.450333279141603,
+    "test_token_accuracy": 0.45559157212317664,
+    "val_exact_line_match": 0.0026666666666666666,
+    "test_exact_line_match": 0.006666666666666667,
+    "val_numeric_correct_given_prefix": 0.0026666666666666666,
+    "test_numeric_correct_given_prefix": 0.006666666666666667,
+    "val_parseable_completion_rate": 1.0,
+    "test_parseable_completion_rate": 1.0
+  },
+  "notes": {
+    "exact_line_match": "Greedy decode after prefix 'a+b='; full string must match.",
+    "numeric_correct": "Parsed a,b,sum from greedy completion; a,b fixed from prefix.",
+    "teacher_metrics": "Teacher-forced next-token loss/accuracy on padded batches."
+  }
+}

@@ -12,7 +12,7 @@ Small **decoder-style causal Transformer** trained on synthetic lines `a+b=c` us
 | Line format | One equation per line, no spaces (see `data/manifest.json`). |
 | Splits | Train / validation / test (default 70% / 15% / 15%). |
 
-**Bias note:** Pairs \((a,b)\) are sampled uniformly at random (with unique pairs). Real usage or human-written math can follow other distributions; a model trained only on this corpus may not reflect that and can amplify skew if you later mix data sources.
+**Sampling:** Use `build_dataset.py` flags. Default is **`--bias-mode small_operands`** (skew toward both operands in `[1, --bias-region-max]`). Use **`--bias-mode uniform`** for a flat distribution over unique pairs.
 
 ## Environment
 
@@ -26,7 +26,12 @@ pip install -r requirements.txt
 ## 1) Build the dataset
 
 ```bash
-python3 build_dataset.py --out-dir data --n-examples 5000 --seed 42
+# Biased (default): ~88% of draws favor both operands ≤ 35
+python3 build_dataset.py --out-dir data --n-examples 5000 --seed 42 \
+  --bias-mode small_operands --bias-mix 0.88 --bias-region-max 35
+
+# Uniform baseline
+python3 build_dataset.py --out-dir data --n-examples 5000 --seed 42 --bias-mode uniform
 ```
 
 This writes `data/train.txt`, `data/val.txt`, `data/test.txt`, `data/manifest.json`, and `data/tokenizer_note.txt`.
